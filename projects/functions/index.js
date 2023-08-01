@@ -14,7 +14,7 @@
  */
 function returnFirstArgument(x) {
 return x;
-
+}
 /*
  Задание 2:
 
