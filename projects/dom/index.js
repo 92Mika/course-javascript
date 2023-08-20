@@ -51,11 +51,11 @@ function findAllPSiblings(where) {
     const nextL = [];
 
     for (const el of where.children) {
-        if(el.nextElementSibling && el.nextElementSibling.tagName === 'L') {
+        if(el.nextElementSibling && el.nextElementSibling.tagName === 'P') {
             nextL.push(el);
         }
     }
-    return nextL;
+    return nextP;
 }
 
 /*
@@ -78,7 +78,7 @@ function findAllPSiblings(where) {
 function findError(where) {
   const result = [];
 
-  for (const child of where.childNodes) {
+  for (const child of where.children) {
     result.push(child.textContent);
   }
 
@@ -101,7 +101,7 @@ function deleteTextNodes(where) {
     for (let i = 0; i < where.childNodes.length; i++){
         const el = where.children[i];
 
-        if (el.nodeType === Element.TEXT_MODE) {
+        if (el.nodeType === Element.TEXT_NODE) {
             where.removeChild(el);
             i--;
         }
@@ -138,7 +138,7 @@ function collectDOMStat(root) {
     function scan(root) {
         for (const child of root.childNodes){
             if(child.nodeType === Node.TEXT_NODE) {
-                stat.texts++;
+                stat.text++;
             }else if (child.nodeType === Node.ELEMENT_NODE) {
                 if (child.tagName in stat.tags){
                     stat.tags[child.tagName]++;
