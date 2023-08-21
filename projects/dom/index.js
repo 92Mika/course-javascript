@@ -99,7 +99,7 @@ function findError(where) {
  */
 function deleteTextNodes(where) {
     for (let i = 0; i < where.childNodes.length; i++){
-        const el = where.children[i];
+        const el = where.childNodes[i];
 
         if (el.nodeType === Element.TEXT_NODE) {
             where.removeChild(el);
@@ -138,7 +138,7 @@ function collectDOMStat(root) {
     function scan(root) {
         for (const child of root.childNodes){
             if(child.nodeType === Node.TEXT_NODE) {
-                stat.text++;
+                stat.texts++;
             }else if (child.nodeType === Node.ELEMENT_NODE) {
                 if (child.tagName in stat.tags){
                     stat.tags[child.tagName]++;
