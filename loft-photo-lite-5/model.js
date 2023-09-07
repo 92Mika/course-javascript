@@ -25,7 +25,7 @@ export default {
     findSize(photo) {
         const size = photo.sizes.find((size) => size.width >= 360);
 
-        if(!size)
+        if(!size){
             return photo.sizes.reduce((biggest, current) => {
                 if(current.width > biggest.width) {
                     return current;
